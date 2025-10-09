@@ -9,16 +9,15 @@ class Solution(object):
 
         for i in range(len(nums1)):
             isfound = False
-            target = nums1[i]
+            hasGreater = False
             for j in range(len(nums2)):
-                if nums2[j] == target:
-                    for k in range(j+1, len(nums2)):
-                        if target < nums2[k]:
-                            output.append(nums2[k])
-                            isfound = True
-                            break
+                if nums2[j] == nums1[i]:
+                    isfound = True
+                if isfound and nums1[i] < nums2[j]:
+                    hasGreater = True
+                    output.append(nums2[j])
                     break
-            if not isfound:
+            if not hasGreater:
                 output.append(-1)
         return output
 
